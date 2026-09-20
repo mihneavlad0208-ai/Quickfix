@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickFix — Service Management</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand">Quick<span>Fix</span></div>
+  <div class="brand-sub">Service Management</div>
+  <nav>
+    <button class="nav-item active" data-page="dashboard">▦ <span>Dashboard</span></button>
+    <button class="nav-item" data-page="interventions">🔧 <span>Intervenții</span></button>
+    <button class="nav-item" data-page="schedule">◷ <span>Programări</span></button>
+    <button class="nav-item" data-page="clients">♙ <span>Clienți</span></button>
+    <button class="nav-item" data-page="technicians">👷 <span>Tehnicieni</span></button>
+    <button class="nav-item" data-page="inventory">▣ <span>Stoc</span></button>
+    <button class="nav-item" data-page="reports">◩ <span>Rapoarte</span></button>
+  </nav>
+  <div class="sidebar-footer">QuickFix MVP • v0.1</div>
+</aside>
+
+<main class="main">
+<header class="topbar">
+  <div>
+    <h1 id="page-title">Dashboard</h1>
+    <p id="page-subtitle">Control centralizat pentru operațiunile de service.</p>
+  </div>
+  <div class="top-actions"><button class="icon-btn" title="Notificări">🔔</button><div class="avatar">AD</div></div>
+</header>
+
+<section id="dashboard" class="page active">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">QUICKFIX OPERATIONS</div>
+      <h2>Toate intervențiile, într-un singur loc.</h2>
+      <p>Digitalizează cererile, programările, tehnicienii și materialele folosite în fiecare intervenție.</p>
+    </div>
+    <button class="primary" data-open-modal>+ Intervenție nouă</button>
+  </div>
+
+  <div class="metrics">
+    <article class="metric-card"><span>Intervenții active</span><strong id="active-count">12</strong><small class="positive">+3 față de ieri</small></article>
+    <article class="metric-card"><span>Programări azi</span><strong>18</strong><small class="positive">94% confirmate</small></article>
+    <article class="metric-card"><span>Timp mediu răspuns</span><strong>27 min</strong><small class="positive">-8% săptămâna aceasta</small></article>
+    <article class="metric-card"><span>Venit estimat</span><strong>14.850 lei</strong><small class="positive">+12% vs. săpt. trecută</small></article>
+  </div>
+
+  <div class="two-col">
+    <section class="panel">
+      <div class="panel-head"><h3>Intervenții recente</h3><button class="link-btn" data-page-link="interventions">Vezi toate</button></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Client</th><th>Serviciu</th><th>Tehnician</th><th>Status</th></tr></thead><tbody id="recent-table"></tbody></table></div>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><h3>Performanță operațională</h3></div>
+      <div class="progress-row"><div><span>SLA respectat</span><b>92%</b></div><div class="progress"><i style="width:92%"></i></div></div>
+      <div class="progress-row"><div><span>Intervenții finalizate</span><b>86%</b></div><div class="progress"><i style="width:86%"></i></div></div>
+      <div class="progress-row"><div><span>Feedback pozitiv</span><b>96%</b></div><div class="progress"><i style="width:96%"></i></div></div>
+    </section>
+  </div>
+</section>
+
+<section id="interventions" class="page">
+  <div class="toolbar"><div><h2>Intervenții</h2><p>Gestionează cererile de service și statusul lor.</p></div><button class="primary" data-open-modal>+ Intervenție nouă</button></div>
+  <section class="panel">
+    <div class="filters"><input id="search" placeholder="Caută client, adresă sau serviciu..."><select id="status-filter"><option value="">Toate statusurile</option><option>În lucru</option><option>Programată</option><option>Finalizată</option><option>În așteptare</option></select></div>
+    <div class="table-wrap"><table><thead><tr><th>ID</th><th>Client</th><th>Adresă</th><th>Serviciu</th><th>Prioritate</th><th>Status</th></tr></thead><tbody id="orders-table"></tbody></table></div>
+  </section>
+</section>
+
+<section id="schedule" class="page">
+  <div class="toolbar"><div><h2>Programări</h2><p>Planificarea intervențiilor de astăzi.</p></div></div>
+  <section class="panel"><div class="table-wrap"><table><thead><tr><th>Ora</th><th>Client</th><th>Serviciu</th><th>Tehnician</th><th>Status</th></tr></thead><tbody>
+  <tr><td>09:00</td><td>Andrei Pop</td><td>Instalație sanitară</td><td>Vlad I.</td><td><span class="badge green">Confirmată</span></td></tr>
+  <tr><td>10:30</td><td>Maria Radu</td><td>Electricitate</td><td>Alex M.</td><td><span class="badge green">Confirmată</span></td></tr>
+  <tr><td>12:00</td><td>SC Nova Office</td><td>Climatizare</td><td>Vlad I.</td><td><span class="badge amber">În așteptare</span></td></tr>
+  <tr><td>14:30</td><td>Ioana Matei</td><td>Încălzire</td><td>Dan P.</td><td><span class="badge green">Confirmată</span></td></tr>
+  </tbody></table></div></section>
+</section>
+
+<section id="clients" class="page">
+  <div class="toolbar"><div><h2>Clienți</h2><p>Istoric și valoarea intervențiilor.</p></div><button class="primary" id="client-btn">+ Client nou</button></div>
+  <section class="panel"><div class="table-wrap"><table><thead><tr><th>Client</th><th>Telefon</th><th>Ultima intervenție</th><th>Intervenții</th><th>Valoare totală</th></tr></thead><tbody>
+  <tr><td>Andrei Pop</td><td>07xx xxx 120</td><td>18.09.2026</td><td>4</td><td>1.280 lei</td></tr>
+  <tr><td>Maria Radu</td><td>07xx xxx 481</td><td>20.09.2026</td><td>2</td><td>640 lei</td></tr>
+  <tr><td>SC Nova Office</td><td>021 xxx 881</td><td>12.09.2026</td><td>11</td><td>8.450 lei</td></tr>
+  </tbody></table></div></section>
+</section>
+
+<section id="technicians" class="page">
+  <div class="toolbar"><div><h2>Tehnicieni</h2><p>Disponibilitate și încărcare operațională.</p></div></div>
+  <div class="cards-grid">
+    <article class="person-card"><div class="person-head"><div class="person-avatar">VI</div><div><h3>Vlad Ionescu</h3><p>Sanitar / HVAC</p></div></div><strong>7 intervenții azi</strong><span class="badge green">Disponibil 16:00</span></article>
+    <article class="person-card"><div class="person-head"><div class="person-avatar">AM</div><div><h3>Alex Marinescu</h3><p>Electrician</p></div></div><strong>5 intervenții azi</strong><span class="badge amber">Ocupat</span></article>
+    <article class="person-card"><div class="person-head"><div class="person-avatar">DP</div><div><h3>Dan Popescu</h3><p>Încălzire / Gaz</p></div></div><strong>4 intervenții azi</strong><span class="badge green">Disponibil 15:30</span></article>
+  </div>
+</section>
+
+<section id="inventory" class="page">
+  <div class="toolbar"><div><h2>Stoc materiale</h2><p>Praguri minime și materiale necesare intervențiilor.</p></div></div>
+  <section class="panel"><div class="table-wrap"><table><thead><tr><th>Material</th><th>Categorie</th><th>Stoc</th><th>Prag minim</th><th>Status</th></tr></thead><tbody>
+  <tr><td>Robinet 1/2"</td><td>Sanitar</td><td>38</td><td>15</td><td><span class="badge green">OK</span></td></tr>
+  <tr><td>Siguranță automată 16A</td><td>Electric</td><td>8</td><td>10</td><td><span class="badge red">Comandă</span></td></tr>
+  <tr><td>Bandă PTFE</td><td>Consumabil</td><td>64</td><td>20</td><td><span class="badge green">OK</span></td></tr>
+  </tbody></table></div></section>
+</section>
+
+<section id="reports" class="page">
+  <div class="toolbar"><div><h2>Rapoarte</h2><p>Indicatori pentru decizii operaționale.</p></div></div>
+  <div class="metrics">
+    <article class="metric-card"><span>Rată finalizare</span><strong>86%</strong><small>din intervențiile planificate</small></article>
+    <article class="metric-card"><span>Cost mediu / intervenție</span><strong>184 lei</strong><small>materiale + timp</small></article>
+    <article class="metric-card"><span>Satisfacție clienți</span><strong>4.8/5</strong><small>ultimele 30 zile</small></article>
+    <article class="metric-card"><span>Reveniri în 30 zile</span><strong>4.2%</strong><small>intervenții repetate</small></article>
+  </div>
+</section>
+</main>
+</div>
+
+<div id="modal" class="modal">
+<div class="modal-card">
+  <div class="modal-head"><div><h2>Intervenție nouă</h2><p>Înregistrează o solicitare nouă.</p></div><button id="close-modal" class="close">×</button></div>
+  <form id="order-form" class="form-grid">
+    <label>Client<input required name="client" placeholder="Nume client"></label>
+    <label>Telefon<input name="phone" placeholder="07xx xxx xxx"></label>
+    <label>Adresă<input required name="address" placeholder="Stradă, număr"></label>
+    <label>Serviciu<select name="service"><option>Instalație sanitară</option><option>Electricitate</option><option>Încălzire</option><option>Climatizare</option><option>Alte reparații</option></select></label>
+    <label>Prioritate<select name="priority"><option>Normală</option><option>Urgentă</option></select></label>
+    <label>Tehnician<select name="tech"><option>Vlad I.</option><option>Alex M.</option><option>Dan P.</option></select></label>
+    <label class="full">Descriere<textarea name="description" placeholder="Descrie problema..."></textarea></label>
+    <div class="full form-actions"><button type="button" class="secondary" id="cancel-modal">Anulează</button><button class="primary">Creează intervenția</button></div>
+  </form>
+</div>
+</div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

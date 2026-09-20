@@ -1,27 +1,30 @@
 # QuickFix
 
-Platformă de management operațional pentru o firmă de reparații și intervenții la domiciliu.
+Site public pentru o firmă de reparații și intervenții la domiciliu.
 
-## Componente
-- Frontend: dashboard + module operaționale
-- Backend: Express API în `backend/`
-- API: health + intervenții
+## Ce conține
 
-## MVP
-- Dashboard operațional
-- Intervenții cu căutare, filtrare și creare
-- Programări
-- Clienți
-- Tehnicieni
-- Stoc materiale
-- Rapoarte
-- API backend inițial
+- homepage responsive
+- servicii: instalații sanitare, electricitate, încălzire și climatizare
+- secțiunea „Cum lucrăm”
+- beneficii QuickFix
+- formular de programare
+- contact telefonic și email
+- deployment automat prin GitHub Pages
 
-## Roadmap
-1. Conectare PostgreSQL / Supabase
-2. Autentificare și roluri
-3. CRUD pentru clienți, intervenții și tehnicieni
-4. Hartă + alocare tehnician
-5. Notificări
-6. Devize, facturare și plăți
-7. Aplicație mobilă pentru tehnicieni
+## Structură
+
+- `index.html` — pagina principală
+- `assets/css/style.css` — design și responsive
+- `assets/js/app.js` — formular și interacțiuni
+- `.github/workflows/pages.yml` — publicarea site-ului
+
+## Publicare
+
+Orice push pe `main` declanșează workflow-ul GitHub Pages.
+
+Formularul este pregătit pentru conectarea unui endpoint API separat. Fără backend configurat, pagina rămâne complet utilizabilă ca site de prezentare.
+
+## Înainte de lansarea comercială
+
+Înlocuiește numărul de telefon și adresa de email demonstrative din `index.html` cu datele reale ale companiei.

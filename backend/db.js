@@ -1,0 +1,1 @@
+const {Pool}=require("pg");const url=process.env.DATABASE_URL;if(!url)throw new Error("DATABASE_URL nu este setat");const pool=new Pool({connectionString:url,ssl:process.env.NODE_ENV==="production"?{rejectUnauthorized:false}:undefined});async function query(text,params){return pool.query(text,params)}module.exports={pool,query};

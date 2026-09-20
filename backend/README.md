@@ -1,17 +1,21 @@
 # QuickFix API
 
-Backend minim pentru QuickFix.
+Backend Express + PostgreSQL pentru QuickFix.
 
-## Endpoints
-- GET /api/health
-- GET /api/interventions
-- POST /api/interventions
+## Configurare
+Setează `DATABASE_URL`, `JWT_SECRET`, `ADMIN_EMAIL` și `ADMIN_PASSWORD` în `.env`.
 
-## Local
-```bash
-cd backend
+Rulează mai întâi `database/schema.sql`, apoi:
+```
 npm install
 npm start
-``
+```
 
-Datele sunt momentan în memorie. În etapa următoare API-ul poate fi conectat la PostgreSQL/Supabase.
+## API
+- `GET /api/health`
+- `POST /api/auth/login`
+- `GET /api/me`
+- `GET /api/interventions`
+- `POST /api/interventions`
+
+API-ul folosește PostgreSQL pentru utilizatori, clienți și intervenții.

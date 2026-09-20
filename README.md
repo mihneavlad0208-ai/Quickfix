@@ -2,26 +2,18 @@
 
 Platformă de management operațional pentru o firmă de reparații și intervenții la domiciliu.
 
-## Componente
-- Frontend: dashboard + module operaționale
-- Backend: Express API în `backend/`
-- API: health + intervenții
+## Acum
+- Dashboard și module operaționale
+- API Express
+- Endpoint de login JWT
+- Middleware de autentificare
+- Endpoint pentru utilizatorul curent
+- Endpoint-uri protejate pentru intervenții
 
-## MVP
-- Dashboard operațional
-- Intervenții cu căutare, filtrare și creare
-- Programări
-- Clienți
-- Tehnicieni
-- Stoc materiale
-- Rapoarte
-- API backend inițial
+## Configurare backend
+Copiază `backend/.env.example` în `.env` și setează `JWT_SECRET` și ulterior `DATABASE_URL`.
 
-## Roadmap
-1. Conectare PostgreSQL / Supabase
-2. Autentificare și roluri
-3. CRUD pentru clienți, intervenții și tehnicieni
-4. Hartă + alocare tehnician
-5. Notificări
-6. Devize, facturare și plăți
-7. Aplicație mobilă pentru tehnicieni
+Nu introduce parole reale sau secrete în GitHub.
+
+## Următorul pas
+Persistență PostgreSQL/Supabase și conectarea frontend-ului la API.
